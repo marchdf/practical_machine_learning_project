@@ -1,0 +1,40 @@
+---
+title: "Effect of Vitamin C dose and delivery method on guinea pig tooth growth"
+author: "Marc T. Henry de Frahan"
+output:
+	pdf_document:
+    fig_width: 3.5
+	fig_height: 3
+	number_sections: true
+	fig_caption: true
+---
+	
+# Synopsis
+
+key result
+
+# Exploratory data analysis
+ 
+describe the data (maybe I add some graphs)
+
+# Model design
+
+explain how I picked the model I did
+
+## Cross validation study
+
+## Error rate
+
+# Conclusions 
+
+
+\newpage
+
+# Appendix
+
+The version history of this document can be found at the
+[GitHub repository page](https://github.com/marchdf/practical_machine_learning_project). Here
+is the full code used in this document.
+
+```{r code=readLines(knitr::purl('./tooth_growth.Rmd', documentation = 1)), eval = FALSE}
+```
