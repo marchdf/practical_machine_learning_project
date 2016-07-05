@@ -1,17 +1,18 @@
 ---
-title: "Effect of Vitamin C dose and delivery method on guinea pig tooth growth"
+title: "Predicting the class of activities through personal activity tracking devices"
 author: "Marc T. Henry de Frahan"
-output:
-	pdf_document:
-    fig_width: 3.5
-	fig_height: 3
-	number_sections: true
-	fig_caption: true
 ---
 	
 # Synopsis
 
 key result
+
+# Load some libraries
+```{r}
+library(ggplot2)
+library(caret)
+```
+
 
 # Exploratory data analysis
  
@@ -36,5 +37,5 @@ The version history of this document can be found at the
 [GitHub repository page](https://github.com/marchdf/practical_machine_learning_project). Here
 is the full code used in this document.
 
-```{r code=readLines(knitr::purl('./tooth_growth.Rmd', documentation = 1)), eval = FALSE}
+```{r code=readLines(knitr::purl('./predicting_activities.Rmd', documentation = 1)), eval = FALSE}
 ```
