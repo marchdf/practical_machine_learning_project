@@ -29,8 +29,6 @@ explain how I picked the model I did
 # Conclusions 
 
 
-\newpage
-
 # Appendix
 
 The version history of this document can be found at the
