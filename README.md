@@ -71,3 +71,13 @@ Due to security concerns with the exchange of R code, your code will
 not be run during the evaluation by your classmates. Please be sure
 that if they download the repo, they will be able to view the compiled
 HTML version of your analysis.
+
+## gh-pages
+
+This repo has a gh-pages setup, which means you can access the website
+at
+[https://marchdf.github.io/practical_machine_learning_project/](https://marchdf.github.io/practical_machine_learning_project/). I
+mostly followed the instructions from
+[this link](https://srackham.wordpress.com/2014/12/14/publishing-a-project-website-to-github-pages/)
+but I also looked at
+[this link as well](https://gist.github.com/chrisjacob/833223).
