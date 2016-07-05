@@ -7,7 +7,7 @@ author: "Marc T. Henry de Frahan"
 
 key result
 
-# Load some libraries
+# Load the libraries and the data
 ```{r}
 library(ggplot2)
 library(caret)
