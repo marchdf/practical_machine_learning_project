@@ -11,6 +11,8 @@ key result
 ```{r}
 library(ggplot2)
 library(caret)
+training = read.csv("./pml-training.csv")
+testing = read.csv("./pml-testing.csv")
 ```
 
 

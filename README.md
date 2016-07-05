@@ -91,7 +91,6 @@ Steps to generate this project and update gh-pages:
 library(rmarkdown)
 render("predicting_activities.Rmd")
 ```
-
 2. In the terminal
 ```bash
 cd gh-pages
