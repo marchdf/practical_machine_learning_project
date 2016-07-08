@@ -30,6 +30,7 @@ print(model$finalModel)
 
 ## ------------------------------------------------------------------------
 predictions = predict(model, newdata = testing)
+write.csv(data.frame(predictions),file="answers.csv",quote=FALSE)
 
 ## ----code=readLines(knitr::purl('./predicting_activities.Rmd', documentation = 1)), eval = FALSE----
 ## NA

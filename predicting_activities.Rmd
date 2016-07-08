@@ -71,10 +71,11 @@ against the cross-validation data set, is very small.
 # Predictions
 
 Now we apply our model to the test data and get the predictions. We
-can look at the confusion matrix to see how well we did.
+output these to a text file so we can later submit them to the quiz.
 
 ```{r}
 predictions = predict(model, newdata = testing)
+write.csv(data.frame(predictions),file="answers.csv",quote=FALSE)
 ```
 
 # Conclusions 
