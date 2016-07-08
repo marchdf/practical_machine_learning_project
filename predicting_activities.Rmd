@@ -6,8 +6,7 @@ author: "Marc T. Henry de Frahan"
 # Synopsis
 
 We use a Random Forest model to predict the types of activities
-performed by the users of the personal tracking devices. The
-constructed model has an expected out-of-sample error of .
+performed by the users of the personal tracking devices.
 
 # Load the libraries
 ```{r}
@@ -50,7 +49,7 @@ The model we choose to work with is the Random Forests. This is a
 popular model and works in many different applications. For Random
 Forests, it is not necessary to do a separate cross validation study
 or a separate validation data set since this is taken care of during
-the model building. For this study, we will use a 10 fold cross-validation.
+the model building. For this study, we will use a 5 fold cross-validation.
 
 ```{r}
 k = 5
@@ -65,7 +64,8 @@ print(model$finalModel)
 
 This model is fairly good since the expected out-of-sample error,
 which is defined as 1 - accuracy of the model for predictions made
-against the cross-validation data set, is very small.
+against the cross-validation data set, is very small (listed above in
+as `OOB estimate of error rate`).
 
 
 # Predictions
@@ -75,7 +75,9 @@ output these to a text file so we can later submit them to the quiz.
 
 ```{r}
 predictions = predict(model, newdata = testing)
-write.csv(data.frame(predictions),file="answers.csv",quote=FALSE)
+predictions = data.frame(predictions)
+print(predictions)
+write.csv(predictions,file="answers.csv",quote=FALSE)
 ```
 
 # Conclusions 
