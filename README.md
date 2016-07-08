@@ -15,7 +15,6 @@ activity they do, but they rarely quantify how well they do it. In
 this project, your goal will be to use data from accelerometers on the
 belt, forearm, arm, and dumbell of 6 participants. They were asked to
 perform barbell lifts correctly and incorrectly in 4 different ways:
-.
 - class A: exactly according to the specification, 
 - class B: throwing the elbows to the front,
 - class C: lifting the dumbbell only halfway,
