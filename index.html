@@ -177,29 +177,30 @@ print(model$finalModel)</code></pre>
 <div id="predictions" class="section level1">
 <h1>Predictions</h1>
 <p>Now we apply our model to the test data and get the predictions. We output these to a text file so we can later submit them to the quiz.</p>
-<pre class="r"><code>predictions = data.frame(predict(model, newdata = testing))
+<pre class="r"><code>predictions = predict(model, newdata = testing)
+predictions = data.frame(predictions)
 print(predictions)</code></pre>
-<pre><code>##    predict.model..newdata...testing.
-## 1                                  B
-## 2                                  A
-## 3                                  A
-## 4                                  D
-## 5                                  A
-## 6                                  C
-## 7                                  D
-## 8                                  B
-## 9                                  A
-## 10                                 A
-## 11                                 A
-## 12                                 C
-## 13                                 B
-## 14                                 A
-## 15                                 D
-## 16                                 E
-## 17                                 A
-## 18                                 B
-## 19                                 B
-## 20                                 B</code></pre>
+<pre><code>##    predictions
+## 1            B
+## 2            A
+## 3            A
+## 4            D
+## 5            A
+## 6            C
+## 7            D
+## 8            B
+## 9            A
+## 10           A
+## 11           A
+## 12           C
+## 13           B
+## 14           A
+## 15           D
+## 16           E
+## 17           A
+## 18           B
+## 19           B
+## 20           B</code></pre>
 <pre class="r"><code>write.csv(predictions,file=&quot;answers.csv&quot;,quote=FALSE)</code></pre>
 </div>
 <div id="conclusions" class="section level1">
@@ -240,7 +241,8 @@ model = train(classe ~ ., method = 'rf', data = df, trControl=trainControl(metho
 print(model$finalModel)
 
 ## ------------------------------------------------------------------------
-predictions = data.frame(predict(model, newdata = testing))
+predictions = predict(model, newdata = testing)
+predictions = data.frame(predictions)
 print(predictions)
 write.csv(predictions,file=&quot;answers.csv&quot;,quote=FALSE)
 
