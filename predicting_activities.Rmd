@@ -5,30 +5,82 @@ author: "Marc T. Henry de Frahan"
 	
 # Synopsis
 
-key result
+We use a Random Forest model to predict the types of activities
+performed by the users of the personal tracking devices. The
+constructed model has an expected out-of-sample error of .
 
-# Load the libraries and the data
+# Load the libraries
 ```{r}
 library(ggplot2)
 library(caret)
-training = read.csv("./pml-training.csv")
-testing = read.csv("./pml-testing.csv")
 ```
 
+# Load the data and clean it
+```{r}
+training = read.csv("./pml-training.csv",na.strings=c("NA",""))
+testing = read.csv("./pml-testing.csv",na.strings=c("NA",""))
+```
 
-# Exploratory data analysis
- 
-describe the data (maybe I add some graphs)
+We will remove some of the identification columns from the data to
+avoid predictions using things like user name and data indexing as
+shown in this figure.
+
+
+```{r}
+qplot(x=X,y=classe,data=training);
+training = subset(training, select = -c(X,user_name,raw_timestamp_part_1,raw_timestamp_part_2,cvtd_timestamp,new_window))
+testing = subset(testing, select = -c(X,user_name,raw_timestamp_part_1,raw_timestamp_part_2,cvtd_timestamp,new_window))
+```
+
+Also, let's get rid of the variables that are mostly NAs. Most likely
+these variables won't be very useful. If the variable has more that
+50% NAs, then we discard it.
+
+```{r}
+n = nrow(testing)
+ratio = 0.5
+keep = colSums(is.na(training))<ratio*n
+training = training[, keep]
+testing  = testing [, keep]
+```
 
 # Model design
 
-explain how I picked the model I did
+The model we choose to work with is the Random Forests. This is a
+popular model and works in many different applications. For Random
+Forests, it is not necessary to do a separate cross validation study
+or a separate validation data set since this is taken care of during
+the model building. For this study, we will use a 10 fold cross-validation.
 
-## Cross validation study
+```{r}
+k = 5
+set.seed(42)
 
-## Error rate
+InTrain<-createDataPartition(y=training$classe,p=0.01,list=FALSE)
+df<-training[InTrain,]
+
+model = train(classe ~ ., method = 'rf', data = df, trControl=trainControl(method="cv",number=k), allowParallel=TRUE,prox=TRUE)
+print(model$finalModel)
+```
+
+This model is fairly good since the expected out-of-sample error,
+which is defined as 1 - accuracy of the model for predictions made
+against the cross-validation data set, is very small.
+
+
+# Predictions
+
+Now we apply our model to the test data and get the predictions. We
+can look at the confusion matrix to see how well we did.
+
+```{r}
+predictions = predict(model, newdata = testing)
+```
 
 # Conclusions 
+
+Using a Random Forest model to predict the types of activities, we
+were able to correctly predict the activities in the test data.
 
 
 # Appendix
