@@ -21,11 +21,7 @@ testing  = testing [, keep]
 ## ------------------------------------------------------------------------
 k = 5
 set.seed(42)
-
-InTrain<-createDataPartition(y=training$classe,p=0.01,list=FALSE)
-df<-training[InTrain,]
-
-model = train(classe ~ ., method = 'rf', data = df, trControl=trainControl(method="cv",number=k), allowParallel=TRUE,prox=TRUE)
+model = train(classe ~ ., method = 'rf', data = training, trControl=trainControl(method="cv",number=k), allowParallel=TRUE,prox=TRUE)
 print(model$finalModel)
 
 ## ------------------------------------------------------------------------
